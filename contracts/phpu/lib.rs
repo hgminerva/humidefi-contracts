@@ -6,6 +6,7 @@ pub mod phpu {
     // imports from ink!
 	use ink_storage::traits::SpreadAllocate;
     use ink_prelude::string::String;
+    use ink_prelude::string::ToString;
     
     // imports from openbrush
 	use openbrush::contracts::psp22::extensions::burnable::*;
@@ -37,5 +38,27 @@ pub mod phpu {
 				_instance._mint(_instance.env().caller(), initial_supply).expect("Should mint"); 
 			})
         }
+
+        #[ink(message)]
+        pub fn name(&self) -> String {
+            match &self.metadata.name {
+                Some(name) => name.clone(),
+                None => "NA".to_string(),
+            }
+        }
+
+        #[ink(message)]
+        pub fn symbol(&self) -> String {
+            match &self.metadata.symbol {
+                Some(symbol) => symbol.clone(),
+                None => "NA".to_string(),
+            }
+        }
+
+        #[ink(message)]
+        pub fn decimal(&self) -> u8 {
+            self.metadata.decimals.clone()
+        }
+
     }
 }
