@@ -3,8 +3,8 @@
 Humidefi [OpenBrush](https://openbrush.io//) contracts. :rocket:
 
 Features:
-- PHPU - PHPU Stable Coin
-- lPHPU - Liquidity PHPU Token
+- phpu - PHPU Stable Coin
+- liquidity - Liquidity Token (lUMI and lPHPU)
 
 Setup:
 ```sh
