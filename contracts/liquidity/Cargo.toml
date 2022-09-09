@@ -1,5 +1,5 @@
 [package]
-name = "lphpu"
+name = "liquidity"
 version = "1.0.0"
 edition = "2021"
 authors = ["HG Minerva"]
@@ -20,7 +20,7 @@ scale-info = { version = "2", default-features = false, features = ["derive"], o
 openbrush = { version = "~2.2.0", default-features = false, features = ["psp22", "pausable", "access_control"] }
 
 [lib]
-name = "lphpu"
+name = "liquidity"
 path = "lib.rs"
 crate-type = [
     # Used for normal contract Wasm blobs.

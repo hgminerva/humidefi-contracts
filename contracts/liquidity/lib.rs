@@ -1,21 +1,8 @@
-// Minting
-// =====
-// 1. Transfer PHPU to the owner of the contract.
-// 2. Mint lPHPU of the same quantity that was transferred.
-// 3. Transfer the minted lPHPU to the sender.
-
-// Burning
-// ======
-// 1. Transfer lPHPU to the owner of the contract.
-// 2. Burn the lPHPU of the same quantity that was transferred.
-// 3. Transfer equivalent PHPU to the sender.
-
-
 #![cfg_attr(not(feature = "std"), no_std)]
 #![feature(min_specialization)]
         
 #[openbrush::contract]
-pub mod lphpu {
+pub mod liquidity {
     // imports from ink!
 	use ink_storage::traits::SpreadAllocate;
     use ink_prelude::string::String;

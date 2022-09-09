@@ -41,6 +41,14 @@ pub mod phpu {
         }
 
         #[ink(message)]
+        pub fn swap_transfer(&mut self, to: AccountId, net: Balance, collector: AccountId, fee: Balance,  remarks: Vec<u8>) -> Result<(), PSP22Error> {
+            let from = self.env().caller();
+            self._transfer_from_to(from, to, net, remarks.clone())?;
+            self._transfer_from_to(from, collector, fee, remarks)?;
+            Ok(())
+        }
+
+        #[ink(message)]
         pub fn mint_to(&mut self, account: AccountId, amount: Balance) -> Result<(), PSP22Error> {
             self.mint(account, amount)
         }
