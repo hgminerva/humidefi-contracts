@@ -7,6 +7,7 @@ pub mod phpu {
 	use ink_storage::traits::SpreadAllocate;
     use ink_prelude::string::String;
     use ink_prelude::string::ToString;
+    use ink_prelude::vec::Vec;
     
     // imports from openbrush
 	use openbrush::contracts::psp22::extensions::burnable::*;
@@ -37,6 +38,19 @@ pub mod phpu {
                 _instance.metadata.decimals = decimal;
 				_instance._mint(_instance.env().caller(), initial_supply).expect("Should mint"); 
 			})
+        }
+
+        #[ink(message)]
+        pub fn mint_to(&mut self, account: AccountId, amount: Balance) -> Result<(), PSP22Error> {
+            self.mint(account, amount)
+        }
+
+        #[ink(message)]
+        pub fn burn_from_many(&mut self, accounts: Vec<(AccountId, Balance)>) -> Result<(), PSP22Error> {
+            for account in accounts.iter() {
+                self.burn(account.0, account.1)?;
+            }
+            Ok(())
         }
 
         #[ink(message)]
