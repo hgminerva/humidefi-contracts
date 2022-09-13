@@ -41,10 +41,13 @@ pub mod phpu {
         }
 
         #[ink(message)]
-        pub fn swap_transfer(&mut self, to: AccountId, net: Balance, collector: AccountId, fee: Balance,  remarks: Vec<u8>) -> Result<(), PSP22Error> {
+        pub fn swap_transfer(&mut self, to: AccountId, net: Balance, collector: AccountId, fee: Balance) -> Result<(), PSP22Error> {
             let from = self.env().caller();
+            let remarks:Vec<u8> = "Swap".into();
+            
             self._transfer_from_to(from, to, net, remarks.clone())?;
-            self._transfer_from_to(from, collector, fee, remarks)?;
+            self._transfer_from_to(from, collector, fee, remarks.clone())?;
+
             Ok(())
         }
 

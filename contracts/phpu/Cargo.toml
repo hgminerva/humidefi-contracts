@@ -27,6 +27,7 @@ crate-type = [
     "cdylib",
 ]
 
+
 [features]
 default = ["std"]
 std = [
@@ -43,3 +44,6 @@ std = [
     "openbrush/std",
 ]
 ink-as-dependency = [] 
+
+[profile.release]
+overflow-checks = false
